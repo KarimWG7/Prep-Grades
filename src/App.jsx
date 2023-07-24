@@ -1,32 +1,21 @@
-import { useRef } from "react";
+import { Routes, Route } from "react-router-dom";
 
-import "./App.css";
 import Header from "./components/header/header.component";
+import Credentials from "./pages/credintials/credintials.components";
+import Grades from "./pages/grades/grades.component";
+import NotAllowed from "./pages/not-allowed/not-allowed.component";
+import "./App.css"
 
 function App() {
-  const getResults = (e) => {
-    e.preventDefault();
-    console.log(e.target);
-  };
-
   return (
     <div className="App">
-      <Header />
-      <form action="">
-        <label htmlFor="#name">الاسم</label>
-        <input type="text" id="name" />
-        <label htmlFor="#name">رقم الجلوس</label>
-        <input type="number" id="seat" />
-        <button
-          type="submit"
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log(e.target);
-          }}
-        >
-          getResults
-        </button>
-      </form>
+      <Routes>
+        <Route path="/" element={<Header />}>
+          <Route index element={<Credentials />} />
+          <Route path="grades" element={<Grades />}/>
+          <Route  path="not-allowed" element={<NotAllowed />}/>
+        </Route>
+      </Routes>
     </div>
   );
 }

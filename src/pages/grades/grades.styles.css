@@ -1,0 +1,36 @@
+.grades-container.card {
+    max-width: 90%;
+}
+
+.grades {
+    display: grid ;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 20px 30px;
+}
+.credits.card {
+margin: 30px 20px 50px;
+padding: 25px 30px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 20px;
+
+}
+.credits.card h2 {
+    font-size: 24px;
+}
+.credits.card p {
+    font-size: 24px;
+}
+
+@media(max-width: 450px) {
+    .grades-container.card{
+        max-width: unset;
+    }
+    .credits.card h2 {
+        font-size: 20px;
+
+    }
+}

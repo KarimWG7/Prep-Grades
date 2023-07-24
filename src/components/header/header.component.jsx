@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { Fragment } from "react";
 
-import "./header.styles.css"
+import "./header.styles.css";
+import { Link, Outlet } from "react-router-dom";
 
 function Header() {
   return (
-    <header>
+    <Fragment>
+      <header className="card">
         <h1>نتيجة بنات اعدادي</h1>
-    </header>
-  )
+        <Link to="/">Credintials</Link>
+        <Link to="/grades"> Grades</Link>
+        <Link to="/not-allowed">Not Allowed</Link>
+      </header>
+      <Outlet />
+    </Fragment>
+  );
 }
 
-export default Header
+export default Header;

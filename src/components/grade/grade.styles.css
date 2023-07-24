@@ -1,0 +1,15 @@
+.grade.card{ 
+    display: flex ;
+    min-width: 250px;
+    margin: 0;
+    background-color: #fff;
+    border-radius: 100px;
+    align-items: center;
+    padding: 20px 35px;
+    justify-content: space-between;
+    color: #333;
+    align-self: center;
+}
+.grade h2 {
+    font-size: 18px;
+}
