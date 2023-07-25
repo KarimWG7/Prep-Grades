@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getGirlDoc } from "../../utils/firebase/firebase.utils";
 
@@ -25,15 +25,17 @@ function Credentials() {
   const { setErrorText } = useContext(errorTextContext);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (localStorage.getItem("gotGrades")) navigate("/grades");
+  }, [navigate]);
   const resetFormFeilds = () => {
     setUser(defaultUser);
   };
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
-    const cValue = value.trim("");
+    const cValue = value;
     setUser({ ...user, [name]: cValue });
-    console.log(user);
   };
 
   const formSubmitHandler = async (e) => {
@@ -50,6 +52,8 @@ function Credentials() {
         if (compareNames(name1, name2)) {
           setGirlsGrades(grades);
           navigate("/grades");
+          localStorage.setItem("gotGrades", true);
+          localStorage.setItem("grades", JSON.stringify(grades));
         } else {
           setErrorText("رقم الجلوس لا يتطابق مع رقم جلوس هذا الاسم");
           navigate("/not-allowed");
@@ -83,7 +87,9 @@ function Credentials() {
         required
         onChange={inputChangeHandler}
       />
-      <button type="submit">ابحث</button>
+      <button className="button" type="submit">
+        ابحث
+      </button>
     </form>
   );
 }

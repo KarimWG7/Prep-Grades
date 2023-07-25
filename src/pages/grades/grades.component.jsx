@@ -7,11 +7,15 @@ import { girlGradesContext } from "../../contexts/girlGrades.context";
 import "./grades.styles.css";
 
 function Grades() {
-  const { girlGrades } = useContext(girlGradesContext);
-  // const navigate = useNavigate();
-  // useEffect(() => {
-  //   if (!localStorage.getItem("gotGrades")) navigate("/not-allowed");
-  // }, []);
+  const { girlGrades, setGirlsGrades } = useContext(girlGradesContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem("gotGrades")) navigate("/not-allowed");
+    else {
+      const grades = JSON.parse(localStorage.getItem("grades"));
+      setGirlsGrades(grades);
+    }
+  }, [navigate]);
   return (
     <section className="grades-container card">
       <div className="credits card">
