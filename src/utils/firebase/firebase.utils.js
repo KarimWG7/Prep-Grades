@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc, getDoc, collection } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -17,5 +17,19 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
+export default db;
 
-export default db
+const girlsGradesRef = collection(db, "Grades");
+export const getGirlDoc = async ({ name, seatNum }) => {
+  try {
+    const gradesRef = doc(girlsGradesRef, `Girl ${seatNum}`);
+    const gradesSnapShot = await getDoc(gradesRef);
+    if (!gradesSnapShot.exists())
+      return { errorText: "لا يوجد مثل رقم الجلوس هذا " };
+    return gradesSnapShot.data();
+  } catch (err) {
+    if (err.message === "Failed to get document because the client is offline.")
+      return { errorText: "رجاءا الاتصال بالانترنت والعوده مره اخري" };
+    console.error(err);
+  }
+};
