@@ -8,9 +8,6 @@ function Header() {
     <Fragment>
       <header className="card">
         <h1>نتيجة بنات اعدادي</h1>
-        <Link to="/">Credintials</Link>
-        <Link to="/grades"> Grades</Link>
-        <Link to="/not-allowed">Not Allowed</Link>
       </header>
       <Outlet />
     </Fragment>
