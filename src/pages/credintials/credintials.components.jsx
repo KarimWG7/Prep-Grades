@@ -34,7 +34,7 @@ function Credentials() {
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
-    const cValue = value;
+    const cValue = value.trim();
     setUser({ ...user, [name]: cValue });
   };
 
