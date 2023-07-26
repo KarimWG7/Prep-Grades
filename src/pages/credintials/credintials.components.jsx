@@ -14,7 +14,7 @@ const defaultUser = {
 
 const compareNames = (name1, name2) => {
   const name1Arr = name1.split(" ");
-  const name2Arr = name2.split(" ");
+  const name2Arr = name2.trim().split(" ");
   return name1Arr.includes(name2Arr[0] && name2Arr[1] && name2Arr.at(-1));
 };
 
@@ -34,8 +34,7 @@ function Credentials() {
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
-    const cValue = value;
-    setUser({ ...user, [name]: cValue });
+    setUser({ ...user, [name]: value });
   };
 
   const formSubmitHandler = async (e) => {
