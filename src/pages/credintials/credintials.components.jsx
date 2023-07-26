@@ -13,6 +13,7 @@ const defaultUser = {
 };
 
 const compareNames = (name1, name2) => {
+  if (name1 === name2.trim()) return true;
   const name1Arr = name1.split(" ");
   const name2Arr = name2.trim().split(" ");
   return name1Arr.includes(name2Arr[0] && name2Arr[1] && name2Arr.at(-1));
