@@ -35,7 +35,7 @@ function Credentials() {
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
     const cValue = value;
-    setUser({ ...user, [name]: cValue.trim() });
+    setUser((state) => {{ state.name = cValue.trim()}});
   };
 
   const formSubmitHandler = async (e) => {
