@@ -29,6 +29,15 @@ gap: 20px;
     .grades-container.card{
         max-width: unset;
     }
+    .grades {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .grade.card {
+        min-width: 200px;
+    }
+    .grade.card h2 {
+        font-size: 18px;
+    }
     .credits.card h2 {
         font-size: 20px;
 
